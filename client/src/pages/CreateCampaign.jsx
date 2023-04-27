@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useStateContext } from "../context";
 import { ethers } from "ethers";
 import { money } from "../assets";
 import { CustomButton, FormField } from "../components";
@@ -9,7 +9,7 @@ import { checkIfImage } from "../utils";
 const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  // const { createCampaign } = useStateContext();
+  const { createCampaign } = useStateContext();
   const [form, setForm] = useState({
     name: "",
     title: "",
@@ -39,6 +39,8 @@ const CreateCampaign = () => {
         setForm({ ...form, image: "" });
       }
     });
+
+    console.log(form);
   };
   return (
     <div className='bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 mt-2'>
